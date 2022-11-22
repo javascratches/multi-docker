@@ -15,16 +15,13 @@ after_success:
   - docker build -t javascratches/multi-nginx ./nginx
   - docker build -t javascratches/multi-server ./server
   - docker build -t javascratches/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --pasword-stdin
+  - docker push javascratches/multi-client  
+  - docker push javascratches/multi-nginx  
+  - docker push javascratches/multi-server  
+  - docker push javascratches/multi-worker
+  
 
 
-# deploy:
-#   provider: elasticbeanstalk
-#   region: "eu-central-1"
-#   app: "docker-react"
-#   env: "wklej
-#   bucket_name: "wklej"
-#   bucket_path: "docker-react"
-#   on:
-#     branch: master
-#   access_key_id: $AWS_ACCESS_KEY
-#   secret_access_key: "$AWS_SECRET_KEY"
+
+
