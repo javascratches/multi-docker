@@ -15,7 +15,7 @@ after_success:
   - docker build -t javascratches/multi-nginx ./nginx
   - docker build -t javascratches/multi-server ./server
   - docker build -t javascratches/multi-worker ./worker
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --pasword-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push javascratches/multi-client  
   - docker push javascratches/multi-nginx  
   - docker push javascratches/multi-server  
